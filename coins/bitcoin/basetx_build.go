@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/btcsuite/btcd/btcec/v2/ecdsa"
 	"github.com/btcsuite/btcd/btcutil"
@@ -61,7 +62,7 @@ func (build *TransactionBuilder) AddOutput(address string, amount int64) {
 	build.outputs = append(build.outputs, output)
 }
 
-func (build *TransactionBuilder) build() (string, error) {
+func (build *TransactionBuilder) Build() (string, error) {
 	if len(build.inputs) == 0 || len(build.outputs) == 0 {
 		return "", errors.New("invalid inputs or outputs")
 	}
